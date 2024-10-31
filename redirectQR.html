@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        window.onload = function() {
+            const userAgent = navigator.userAgent;
+
+            const isAndroid = /Android/i.test(userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+
+            if (isIOS) {
+                // Redirect to iOS App Store
+                window.location.href = 'https://apps.apple.com/your-ios-app-url';
+            } else if (isAndroid) {
+                // Redirect to Android Play Store
+                window.location.href = 'https://play.google.com/store/apps/details?id=your.android.app.package';
+            } else {
+                // Handle unsupported devices
+                document.body.innerHTML = '<h1>Unsupported device</h1>';
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <p>Please wait while we redirect you to the appropriate store...</p>
+</body>
+</html>
