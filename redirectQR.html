@@ -10,12 +10,14 @@
 
             const isAndroid = /Android/i.test(userAgent);
             const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+            const isWindows = /Windows/i.test(userAgent);
+            const isMac = /Macintosh/i.test(userAgent) && !isIOS; // Mac without iOS devices
 
-            if (isIOS) {
-                // Redirect to iOS App Store
+            if (isIOS || isMac) {
+                // Redirect to iOS App Store for iOS and macOS
                 window.location.href = 'https://apps.apple.com/pk/app/etugra-auth/id1673531030';
-            } else if (isAndroid) {
-                // Redirect to Android Play Store
+            } else if (isAndroid || isWindows) {
+                // Redirect to Android Play Store for Android and Windows
                 window.location.href = 'https://play.google.com/store/apps/details?id=com.etugra.rss.mobile.app&hl=en_US';
             } else {
                 // Handle unsupported devices
